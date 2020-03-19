@@ -1,0 +1,46 @@
+drop table if exists t_common_log;
+
+/*==============================================================*/
+/* Table: t_common_log                    通用日志                      */
+/*==============================================================*/
+create table t_common_log
+(
+   id                   varchar(32) not null comment '主键',
+   host_ip              varchar(20) comment '服务器IP',
+   log_type             char(2) comment '日志类型（系统日志，，接口日志、业务日志、错误日志）',
+   log_desc             varchar(200) comment '日志描述',
+   moudle_id            varchar(50) comment '模块ID',
+   moudle_desc          varchar(200) comment '模块描述',
+   fun_id               varchar(50) comment '功能ID',
+   fun_desc             char(10) comment '功能描述',
+   request_method       varchar(20) comment '请求方法',
+   request_url          varchar(100) comment '请求接口',
+   request_param        text comment '请求参数',
+   log_content          text comment '日志内容',
+   operator_name        varchar(50) comment '操作人',
+   operator_id          varchar(50) comment '操作ID',
+   create_time          datetime comment '创建时间',
+   primary key (id)
+);
+
+
+drop table if exists t_system_log;
+
+/*==============================================================*/
+/* Table: t_system_log             系统日志                             */
+/*==============================================================*/
+create table t_system_log
+(
+   id                   bigint not null auto_increment comment '主键ID ',
+   business_name        varchar(200) comment '业务名称',
+   class_name           varchar(200) comment '类名',
+   method_name          varchar(200) comment '方法名',
+   method_desc          varchar(200) comment '方法描述',
+   params               text comment '参数',
+   run_time             bigint comment '运行时长',
+   remark               varchar(500) comment '备注',
+   create_time          datetime comment '创建时间',
+   primary key (id)
+);
+
+
